@@ -1,5 +1,8 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import { TimelinePages } from '@/components/TimelinePages';
+import { ShootingStars } from '@/components/ui/shooting-stars';
+import { StarsBackground } from '@/components/ui/stars-background';
+import HeaderPage from '../components/HeaderPage';
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -7,5 +10,8 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<ShootingStars client:load/>
+	<StarsBackground client:load/>
+	<HeaderPage client:load/>
+	<TimelinePages client:load/>
 </Layout>
