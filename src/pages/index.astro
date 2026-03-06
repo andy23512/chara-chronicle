@@ -1,7 +1,5 @@
 ---
 import { TimelinePages } from '@/components/TimelinePages';
-import { ShootingStars } from '@/components/ui/shooting-stars';
-import { StarsBackground } from '@/components/ui/stars-background';
 import HeaderPage from '../components/HeaderPage';
 import Layout from '../layouts/Layout.astro';
 
@@ -10,8 +8,6 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-	<ShootingStars client:load/>
-	<StarsBackground client:load/>
 	<HeaderPage client:only/>
 	<TimelinePages client:only/>
 </Layout>

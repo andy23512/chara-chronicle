@@ -77,9 +77,6 @@ function ClockLabel({
   readonly className: string;
   readonly clipPath: string;
 }) {
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
   return (
     <g className={className} clipPath={clipPath}>
       {hours.map(({ hour, label }) => {
@@ -93,30 +90,8 @@ function ClockLabel({
             dominantBaseline="middle"
             className="font-roboto"
             fontSize={250}
+            transform={`rotate(${degree} 0 0)`}
           >
-            <animateTransform
-              attributeName="transform"
-              attributeType="XML"
-              type="rotate"
-              from={prefersReducedMotion ? `${degree} 0 0` : "0 0 0"}
-              to={`${degree} 0 0`}
-              dur={prefersReducedMotion ? "0s" : `${(1 * hour) / 12}s`}
-              repeatCount="1"
-              fill="freeze"
-              keySplines="0.1 0.8 0.2 1"
-              keyTimes="0;1"
-              calcMode="spline"
-            />
-            <animate
-              attributeName="opacity"
-              values={prefersReducedMotion ? "1;1" : "0;1"}
-              dur={prefersReducedMotion ? "0s" : `${(1 * hour) / 12}s`}
-              repeatCount="1"
-              fill="freeze"
-              keySplines="0.1 0.8 0.2 1"
-              keyTimes="0;1"
-              calcMode="spline"
-            />
             {label}
           </text>
         );
