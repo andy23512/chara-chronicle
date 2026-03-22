@@ -6,7 +6,7 @@ interface TimelineEntry {
 }
 
 interface TimelineYearEntry {
-  year: number;
+  year: number | null;
   yearInRoman: string;
   title: string;
   items: TimelineEntry[];
@@ -165,6 +165,19 @@ const timelineData: TimelineYearEntry[] = [
       },
     ],
   },
+  {
+    year: null,
+    yearInRoman: "ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ",
+    title: "To be continued...",
+    items: [
+      {
+        time: "",
+        description: [
+          "until the whole world can type at the speed of thought...",
+        ],
+      },
+    ],
+  },
 ];
 
 export function TimelinePages() {
@@ -192,7 +205,7 @@ export function TimelinePages() {
               <ul className="flex flex-col lg:text-xl">
                 {entry.items.map((item, index) => (
                   <li key={index}>
-                    <span>{item.time} - </span>
+                    {item.time ? <span>{item.time} - </span> : null}
                     {item.description.map((desc, descIndex) => {
                       if (typeof desc === "string") {
                         return <span key={descIndex}>{desc}</span>;
